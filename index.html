@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifa Tractor Parts – Spare Parts & Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust:#C9440A; --amber:#E87E1B; --gold:#F5B800;
+    --soil:#2B1A0D; --charcoal:#1A1A1A; --steel:#3C4A52;
+    --mist:#EAE5DC; --white:#FDFAF5; --green:#25D366;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Barlow',sans-serif;background:var(--charcoal);color:var(--mist);overflow-x:hidden;}
+  body::before{
+    content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity:.04;
+  }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float{
+    position:fixed;bottom:28px;right:28px;z-index:5000;
+    width:62px;height:62px;border-radius:50%;background:var(--green);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 24px rgba(37,211,102,0.55);
+    text-decoration:none;animation:waPulse 2.5s ease-in-out infinite;transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.12);}
+  @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 4px 44px rgba(37,211,102,0.95)}}
+
+  /* ══ NAV ══ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;height:72px;
+    background:rgba(22,22,22,0.96);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(201,68,10,0.25);
+  }
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{
+    width:40px;height:40px;background:var(--rust);
+    clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .nav-logo-text{font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;color:var(--white);line-height:1;}
+  .nav-logo-sub{font-size:10px;letter-spacing:4px;color:var(--amber);text-transform:uppercase;}
+  .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+  .nav-links a{
+    font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--mist);text-decoration:none;
+    transition:color .2s;position:relative;
+  }
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--rust);transition:width .25s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-wa{
+    background:var(--green)!important;color:#fff!important;
+    padding:8px 16px;border-radius:4px;
+    display:inline-flex!important;align-items:center;gap:6px;
+  }
+  .nav-wa::after{display:none!important;}
+  .nav-cta{
+    background:var(--rust);color:var(--white)!important;
+    padding:8px 18px;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  }
+  .nav-cta:hover{background:var(--amber)!important;}
+  .nav-cta::after{display:none!important;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .hamburger span{width:26px;height:2px;background:var(--mist);display:block;transition:.3s;}
+  .mobile-menu{
+    display:none;position:fixed;top:72px;left:0;right:0;z-index:998;
+    background:rgba(18,18,18,0.98);border-bottom:2px solid var(--rust);
+    flex-direction:column;padding:20px 5%;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    font-family:'Barlow Condensed';font-size:17px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--mist);text-decoration:none;
+    padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color .2s;
+  }
+  .mobile-menu a:hover{color:var(--amber);}
+
+  /* ══ HERO ══ */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+  .hero-bg{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(135deg,rgba(43,26,13,0.97) 0%,rgba(26,26,26,0.88) 60%,rgba(60,74,82,0.92) 100%);
+  }
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;
+    background-image:linear-gradient(rgba(201,68,10,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,68,10,0.08) 1px,transparent 1px);
+    background-size:60px 60px;transform:perspective(600px) rotateX(15deg);transform-origin:center bottom;
+  }
+  .hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 8% 80px;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(201,68,10,0.15);border:1px solid rgba(201,68,10,0.4);
+    padding:6px 16px;width:fit-content;margin-bottom:28px;
+    font-family:'Barlow Condensed';font-size:12px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;
+    animation:fadeSlideUp .7s ease both;
+  }
+  .hero-badge span{width:6px;height:6px;background:var(--rust);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-family:'Bebas Neue';font-size:clamp(52px,8vw,108px);line-height:.92;letter-spacing:2px;color:var(--white);animation:fadeSlideUp .7s .15s ease both;}
+  h1 em{color:var(--rust);font-style:normal;}
+  h1 span{color:var(--gold);}
+  .hero-sub{margin-top:24px;max-width:440px;font-size:16px;font-weight:300;line-height:1.7;color:rgba(234,229,220,0.75);animation:fadeSlideUp .7s .3s ease both;}
+  .hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;animation:fadeSlideUp .7s .45s ease both;}
+  .btn-primary{
+    background:var(--rust);color:var(--white);padding:13px 30px;text-decoration:none;
+    font-family:'Barlow Condensed';font-size:14px;letter-spacing:2px;text-transform:uppercase;
+    clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary:hover{background:var(--amber);transform:translateY(-2px);}
+  .btn-wa{
+    background:var(--green);color:#fff;padding:13px 28px;text-decoration:none;
+    font-family:'Barlow Condensed';font-size:14px;letter-spacing:2px;text-transform:uppercase;
+    transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;border-radius:2px;
+  }
+  .btn-wa:hover{opacity:.86;transform:translateY(-2px);}
+  .hero-stats{display:flex;gap:36px;margin-top:52px;animation:fadeSlideUp .7s .6s ease both;flex-wrap:wrap;}
+  .stat-val{font-family:'Bebas Neue';font-size:42px;color:var(--gold);line-height:1;}
+  .stat-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,229,220,0.5);margin-top:4px;}
+  .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:80px 40px;animation:fadeIn 1s .4s ease both;}
+  .gear-container{position:relative;display:flex;align-items:center;justify-content:center;height:420px;width:100%;max-width:460px;}
+  .gear{position:absolute;border-radius:50%;border:4px solid;}
+  .gear-xl{width:280px;height:280px;border-color:rgba(201,68,10,0.6);animation:spin 18s linear infinite;background:radial-gradient(circle,rgba(201,68,10,0.05) 0%,transparent 70%);}
+  .gear-xl::before{content:'';position:absolute;inset:-16px;border-radius:50%;background:repeating-conic-gradient(rgba(201,68,10,0.5) 0deg 10deg,transparent 10deg 20deg);}
+  .gear-md{width:160px;height:160px;border-color:rgba(232,126,27,0.5);top:30px;right:20px;animation:spin 12s linear infinite reverse;}
+  .gear-sm{width:100px;height:100px;border-color:rgba(245,184,0,0.4);bottom:20px;left:10px;animation:spin 8s linear infinite;}
+  .center-emblem{
+    position:absolute;z-index:3;width:120px;height:120px;
+    background:linear-gradient(135deg,var(--rust),var(--amber));
+    clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;text-align:center;line-height:1.3;color:var(--white);
+    box-shadow:0 0 60px rgba(201,68,10,0.4);
+  }
+  .float-card{position:absolute;background:rgba(26,26,26,0.92);border:1px solid rgba(201,68,10,0.3);padding:12px 18px;backdrop-filter:blur(8px);animation:float 4s ease-in-out infinite;}
+  .float-card:nth-child(5){animation-delay:.5s;top:8%;left:-8%;}
+  .float-card:nth-child(6){animation-delay:1.2s;bottom:12%;right:-4%;}
+  .float-card-label{font-size:10px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;}
+  .float-card-val{font-family:'Bebas Neue';font-size:26px;color:var(--white);line-height:1.1;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  /* ══ MARQUEE ══ */
+  .marquee-bar{background:linear-gradient(90deg,var(--rust),var(--amber),var(--rust));padding:12px 0;overflow:hidden;}
+  .marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 30s linear infinite;}
+  .marquee-item{font-family:'Barlow Condensed';font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#fff;white-space:nowrap;display:flex;align-items:center;gap:16px;}
+  .marquee-item::after{content:'◆';opacity:.6;}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* ══ COMMONS ══ */
+  section{padding:90px 5%;}
+  .section-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+  .section-label::before{content:'';width:30px;height:2px;background:var(--rust);}
+  h2{font-family:'Bebas Neue';font-size:clamp(36px,5vw,64px);line-height:.95;letter-spacing:1px;color:var(--white);}
+  h2 em{color:var(--rust);font-style:normal;}
+
+  /* ══ PARTS ══ */
+  .categories{background:var(--charcoal);}
+  .categories-header{max-width:600px;margin-bottom:50px;}
+  .categories-header p{margin-top:14px;color:rgba(234,229,220,0.6);line-height:1.7;}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px;}
+  .cat-card{background:rgba(43,26,13,0.5);padding:34px 24px;border:1px solid rgba(201,68,10,0.12);cursor:pointer;position:relative;overflow:hidden;transition:transform .25s,background .25s;text-decoration:none;display:block;}
+  .cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,68,10,0.15),transparent);opacity:0;transition:opacity .25s;}
+  .cat-card:hover{transform:translateY(-4px);background:rgba(201,68,10,0.08);}
+  .cat-card:hover::before{opacity:1;}
+  .cat-icon{font-size:36px;margin-bottom:16px;display:block;filter:drop-shadow(0 0 10px rgba(201,68,10,0.4));}
+  .cat-name{font-family:'Bebas Neue';font-size:20px;letter-spacing:1px;color:var(--white);margin-bottom:6px;}
+  .cat-desc{font-size:12px;color:rgba(234,229,220,0.5);line-height:1.5;}
+  .cat-arrow{position:absolute;top:24px;right:24px;color:var(--rust);font-size:16px;opacity:0;transform:translateX(-8px);transition:.25s;}
+  .cat-card:hover .cat-arrow{opacity:1;transform:translateX(0);}
+
+  /* ══ SERVICES ══ */
+  .services-section{background:linear-gradient(180deg,rgba(43,26,13,0.65) 0%,rgba(26,26,26,1) 100%);position:relative;}
+  .services-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rust),var(--amber),var(--gold),var(--amber),var(--rust));}
+  .services-header{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .services-header .section-label{justify-content:center;}
+  .services-header p{margin-top:14px;color:rgba(234,229,220,0.6);line-height:1.7;font-size:15px;}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,68,10,0.15);padding:30px 26px;position:relative;overflow:hidden;transition:.3s;}
+  .service-card::after{content:'';position:absolute;bottom:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rust),var(--amber));transition:width .4s;}
+  .service-card:hover{background:rgba(201,68,10,0.06);border-color:rgba(201,68,10,0.35);transform:translateY(-3px);}
+  .service-card:hover::after{width:100%;}
+  .service-icon{font-size:42px;margin-bottom:16px;display:block;}
+  .service-name{font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+  .service-desc{font-size:13px;color:rgba(234,229,220,0.55);line-height:1.65;margin-bottom:14px;}
+  .service-badge{display:inline-block;background:rgba(201,68,10,0.15);border:1px solid rgba(201,68,10,0.3);padding:3px 11px;font-size:10px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;}
+  .service-wa-btn{
+    display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+    background:var(--green);color:#fff;padding:9px 16px;text-decoration:none;
+    font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    border-radius:3px;transition:opacity .2s;
+  }
+  .service-wa-btn:hover{opacity:.84;}
+
+  /* ══ WHY ══ */
+  .why-us{background:var(--charcoal);position:relative;overflow:hidden;}
+  .why-us::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,68,10,0.07) 0%,transparent 70%);}
+  .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center;}
+  .why-left h2{margin-bottom:16px;}
+  .why-left p{color:rgba(234,229,220,0.65);line-height:1.8;font-size:15px;margin-bottom:26px;}
+  .why-facts{display:flex;flex-direction:column;}
+  .why-fact{display:flex;align-items:flex-start;gap:16px;padding:17px 0;border-bottom:1px solid rgba(201,68,10,0.12);}
+  .why-fact-num{font-family:'Bebas Neue';font-size:34px;color:var(--rust);line-height:1;min-width:46px;}
+  .why-fact-text strong{display:block;font-size:15px;color:var(--white);margin-bottom:4px;}
+  .why-fact-text span{font-size:13px;color:rgba(234,229,220,0.5);}
+  .why-right{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .feature-tile{background:rgba(255,255,255,0.03);border:1px solid rgba(201,68,10,0.15);padding:24px 20px;transition:.25s;}
+  .feature-tile:hover{background:rgba(201,68,10,0.06);border-color:rgba(201,68,10,0.4);}
+  .feature-tile:first-child{grid-column:span 2;}
+  .ft-icon{font-size:26px;margin-bottom:12px;}
+  .ft-title{font-family:'Barlow Condensed';font-size:15px;letter-spacing:1px;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+  .ft-body{font-size:13px;color:rgba(234,229,220,0.5);line-height:1.6;}
+
+  /* ══ BRANDS ══ */
+  .brands{background:rgba(43,26,13,0.3);border-top:1px solid rgba(201,68,10,0.1);border-bottom:1px solid rgba(201,68,10,0.1);}
+  .brands-header{text-align:center;margin-bottom:44px;}
+  .brands-header p{color:rgba(234,229,220,0.5);margin-top:12px;font-size:15px;}
+  .brand-grid{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;}
+  .brand-pill{background:rgba(255,255,255,0.04);border:1px solid rgba(201,68,10,0.15);padding:12px 26px;font-family:'Barlow Condensed';font-size:14px;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:rgba(234,229,220,0.5);transition:.2s;cursor:default;}
+  .brand-pill:hover{color:var(--amber);border-color:var(--amber);background:rgba(232,126,27,0.08);}
+
+  /* ══ CONTACT ══ */
+  .contact-section{background:var(--charcoal);}
+  .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .contact-info h2{margin-bottom:16px;}
+  .contact-info>p{color:rgba(234,229,220,0.6);line-height:1.8;margin-bottom:32px;font-size:15px;}
+  .contact-item{display:flex;align-items:flex-start;gap:15px;margin-bottom:20px;}
+  .contact-icon{width:44px;height:44px;flex-shrink:0;background:rgba(201,68,10,0.15);border:1px solid rgba(201,68,10,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .contact-item-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+  .contact-item-val{font-size:15px;color:var(--white);}
+  .contact-item-val a{color:var(--white);text-decoration:none;transition:color .2s;}
+  .contact-item-val a:hover{color:var(--amber);}
+  .quick-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+  .qa-btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;padding:12px 20px;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:.2s;}
+  .qa-btn.wa{background:var(--green);color:#fff;border-radius:3px;}
+  .qa-btn.wa:hover{opacity:.85;}
+  .qa-btn.call{background:transparent;color:var(--white);border:1px solid rgba(234,229,220,0.3);}
+  .qa-btn.call:hover{border-color:var(--gold);color:var(--gold);}
+  .qa-btn.maps{background:rgba(201,68,10,0.15);color:var(--amber);border:1px solid rgba(201,68,10,0.3);}
+  .qa-btn.maps:hover{background:rgba(201,68,10,0.3);}
+  .contact-form{background:rgba(255,255,255,0.03);border:1px solid rgba(201,68,10,0.15);padding:34px;}
+  .form-title{font-family:'Bebas Neue';font-size:26px;letter-spacing:1px;color:var(--white);margin-bottom:22px;}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:6px;}
+  .form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(201,68,10,0.2);padding:11px 14px;color:var(--mist);font-family:'Barlow';font-size:14px;outline:none;transition:border-color .2s;}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--rust);}
+  .form-group textarea{resize:vertical;min-height:80px;}
+  .form-group select option{background:var(--charcoal);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .submit-btn{width:100%;background:var(--rust);color:#fff;padding:15px;border:none;cursor:pointer;font-family:'Barlow Condensed';font-size:14px;letter-spacing:3px;text-transform:uppercase;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:.2s;margin-top:6px;}
+  .submit-btn:hover{background:var(--amber);}
+  .form-note{margin-top:10px;font-size:12px;color:rgba(234,229,220,0.35);text-align:center;}
+
+  /* ══ MAP ══ */
+  .map-section{background:rgba(43,26,13,0.4);padding:0;}
+  .map-overlay-bar{background:rgba(22,22,22,0.97);border-bottom:2px solid var(--rust);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+  .map-overlay-bar h3{font-family:'Bebas Neue';font-size:24px;letter-spacing:2px;color:var(--white);}
+  .map-overlay-bar p{font-size:13px;color:rgba(234,229,220,0.5);margin-top:2px;}
+  .map-directions-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--rust);color:#fff;padding:10px 22px;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:.2s;}
+  .map-directions-btn:hover{background:var(--amber);}
+  .map-frame{width:100%;height:420px;border:none;display:block;filter:grayscale(35%) contrast(1.05) brightness(0.85);}
+
+  /* ══ FOOTER ══ */
+  footer{background:rgba(24,14,6,0.98);border-top:1px solid rgba(201,68,10,0.2);padding:58px 5% 26px;}
+  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:42px;}
+  .footer-brand .logo-text{font-family:'Bebas Neue';font-size:26px;letter-spacing:2px;color:var(--white);}
+  .footer-brand .logo-sub{font-size:10px;letter-spacing:4px;color:var(--rust);text-transform:uppercase;}
+  .footer-brand p{margin-top:13px;font-size:13px;color:rgba(234,229,220,0.4);line-height:1.7;max-width:230px;}
+  .footer-wa{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:var(--green);color:#fff;padding:10px 18px;text-decoration:none;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;border-radius:3px;transition:opacity .2s;}
+  .footer-wa:hover{opacity:.85;}
+  .footer-col h4{font-family:'Barlow Condensed';font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:17px;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:9px;}
+  .footer-col ul a{font-size:13px;color:rgba(234,229,220,0.4);text-decoration:none;transition:color .2s;}
+  .footer-col ul a:hover{color:var(--mist);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .footer-bottom p{font-size:12px;color:rgba(234,229,220,0.3);}
+  .footer-bottom span{color:var(--rust);}
+
+  /* ══ RESPONSIVE ══ */
+  @media(max-width:960px){
+    .hero{grid-template-columns:1fr;}
+    .hero-right{display:none;}
+    .hero-left{padding:100px 6% 60px;}
+    .why-layout{grid-template-columns:1fr;gap:40px;}
+    .contact-layout{grid-template-columns:1fr;gap:38px;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    nav .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }
+  @media(max-width:600px){
+    section{padding:60px 5%;}
+    .hero-stats{gap:18px;}
+    .footer-top{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .why-right{grid-template-columns:1fr;}
+    .why-right .feature-tile:first-child{grid-column:span 1;}
+    .services-grid{grid-template-columns:1fr;}
+    .map-overlay-bar{flex-direction:column;align-items:flex-start;}
+    .map-frame{height:300px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/9368922297?text=Hello%20Shifa%20Tractor%20Parts%2C%20I%20need%20help!" target="_blank" rel="noopener" title="WhatsApp Us Now">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.787-1.853l-.487-.29-5.027 1.19 1.21-4.91-.317-.503A13.277 13.277 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.91c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <div class="nav-logo-icon">⚙</div>
+    <div><div class="nav-logo-text">Shifa</div><div class="nav-logo-sub">Tractor Parts</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">Parts</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#map-section">Location</a></li>
+    <li>
+      <a class="nav-wa" href="https://wa.me/9368922297?text=Hello!" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        WhatsApp
+      </a>
+    </li>
+    <li><a href="#contact" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#categories"  onclick="this.closest('.mobile-menu').classList.remove('open')">🔩 Parts</a>
+  <a href="#services"    onclick="this.closest('.mobile-menu').classList.remove('open')">🔧 Services</a>
+  <a href="#why"         onclick="this.closest('.mobile-menu').classList.remove('open')">🏆 About Us</a>
+  <a href="#brands"      onclick="this.closest('.mobile-menu').classList.remove('open')">🚜 Brands</a>
+  <a href="#map-section" onclick="this.closest('.mobile-menu').classList.remove('open')">📍 Location</a>
+  <a href="https://wa.me/9368922297" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+  <a href="#contact"     onclick="this.closest('.mobile-menu').classList.remove('open')">✉️ Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><span></span> Trusted Since 2005 · Parts &amp; Workshop Services</div>
+    <h1>Shifa<br><em>Tractor</em><br><span>Parts</span></h1>
+    <p class="hero-sub">Your one-stop destination for premium tractor spare parts <strong style="color:var(--gold)">and professional servicing</strong>. Wheel greasing, hydraulic servicing, engine tune-ups &amp; more — we keep your machines running.</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn-primary">Browse Parts &#x2192;</a>
+      <a href="https://wa.me/923000000000?text=Hello%20Shifa%20Tractor%20Parts%2C%20I%20need%20to%20book%20a%20service." target="_blank" rel="noopener" class="btn-wa">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book Service
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">5000+</div><div class="stat-lbl">Parts in Stock</div></div>
+      <div><div class="stat-val">20+</div><div class="stat-lbl">Years Experience</div></div>
+      <div><div class="stat-val">30+</div><div class="stat-lbl">Brands Covered</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="gear-container">
+      <div class="gear gear-xl"></div>
+      <div class="gear gear-md"></div>
+      <div class="gear gear-sm"></div>
+      <div class="center-emblem">SHIFA<br>PARTS &<br>SERVICE</div>
+      <div class="float-card"><div class="float-card-label">In Stock</div><div class="float-card-val">5000+</div></div>
+      <div class="float-card"><div class="float-card-label">Service</div><div class="float-card-val">Same Day</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <div class="marquee-item">Engine Parts</div><div class="marquee-item">Hydraulic Systems</div>
+    <div class="marquee-item">Wheel Greasing</div><div class="marquee-item">Clutch &amp; Gearbox</div>
+    <div class="marquee-item">Hydro Greasing</div><div class="marquee-item">Electrical Parts</div>
+    <div class="marquee-item">Steering Service</div><div class="marquee-item">Filters &amp; Belts</div>
+    <div class="marquee-item">Tyre Service</div><div class="marquee-item">Full Seasonal Service</div>
+    <div class="marquee-item">Engine Parts</div><div class="marquee-item">Hydraulic Systems</div>
+    <div class="marquee-item">Wheel Greasing</div><div class="marquee-item">Clutch &amp; Gearbox</div>
+    <div class="marquee-item">Hydro Greasing</div><div class="marquee-item">Electrical Parts</div>
+    <div class="marquee-item">Steering Service</div><div class="marquee-item">Filters &amp; Belts</div>
+    <div class="marquee-item">Tyre Service</div><div class="marquee-item">Full Seasonal Service</div>
+  </div>
+</div>
+
+<!-- PARTS -->
+<section class="categories" id="categories">
+  <div class="categories-header">
+    <div class="section-label">Parts Catalogue</div>
+    <h2>What We <em>Supply</em></h2>
+    <p>Comprehensive stock of genuine and aftermarket parts for every major brand and model — click any category to enquire on WhatsApp.</p>
+  </div>
+  <div class="cat-grid">
+    <a href="https://wa.me/9368922297?text=I%20need%20Engine%20Parts%20for%20my%20tractor." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🔩</span><div class="cat-name">Engine Parts</div>
+      <div class="cat-desc">Pistons, rings, liners, gaskets, bearings, crankshafts &amp; more.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Transmission%20parts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">⚙️</span><div class="cat-name">Transmission</div>
+      <div class="cat-desc">Gears, shafts, clutch plates, bearings and gearbox components.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Hydraulic%20parts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🛢️</span><div class="cat-name">Hydraulics</div>
+      <div class="cat-desc">Pumps, cylinders, control valves, seals and hydraulic hoses.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Electrical%20parts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🔌</span><div class="cat-name">Electrical</div>
+      <div class="cat-desc">Starters, alternators, sensors, switches and wiring harnesses.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Steering%20parts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🎯</span><div class="cat-name">Steering</div>
+      <div class="cat-desc">Steering boxes, tie rods, drag links and power steering units.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Cooling%20System%20parts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🔄</span><div class="cat-name">Cooling System</div>
+      <div class="cat-desc">Radiators, water pumps, fans, thermostats and hoses.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Tyres%20or%20Wheels." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🛞</span><div class="cat-name">Tyres &amp; Wheels</div>
+      <div class="cat-desc">Front and rear agricultural tyres, rims and wheel hubs.</div><div class="cat-arrow">↗</div>
+    </a>
+    <a href="https://wa.me/9368922297?text=I%20need%20Filters%20or%20Belts." target="_blank" rel="noopener" class="cat-card">
+      <span class="cat-icon">🔧</span><div class="cat-name">Filters &amp; Belts</div>
+      <div class="cat-desc">Oil, air, fuel filters; drive belts, fan belts and timing parts.</div><div class="cat-arrow">↗</div>
+    </a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div class="section-label">Workshop Services</div>
+    <h2>Professional <em>Tractor</em> Servicing</h2>
+    <p>Beyond parts — our skilled technicians provide hands-on servicing to keep your tractor performing at its best through every season.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <span class="service-icon">🔩</span>
+      <div class="service-name">Wheel Greasing</div>
+      <div class="service-desc">Full front and rear wheel hub greasing using high-quality EP grease. Includes bearing inspection, seal check and spindle examination to prevent premature wear and field breakdowns.</div>
+      <span class="service-badge">Walk-in Available</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20want%20to%20book%20Wheel%20Greasing%20service." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🛢️</span>
+      <div class="service-name">Hydraulic Greasing &amp; Service</div>
+      <div class="service-desc">Complete hydraulic system service: pump pressure test, hydraulic oil change, filter replacement, seal inspection, top-link and lift arm greasing. Keeps your linkage and implements running smoothly.</div>
+      <span class="service-badge">Most Requested</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20want%20Hydraulic%20Greasing%20and%20Service." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <div class="service-name">Engine Tune-Up &amp; Oil Change</div>
+      <div class="service-desc">Engine oil &amp; filter change, fuel and air filter replacement, injector check, valve clearance adjustment and full engine health inspection. Maximise power and fuel efficiency.</div>
+      <span class="service-badge">Most Popular</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20want%20an%20Engine%20Tune-Up%20service." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">Clutch &amp; Gearbox Repair</div>
+      <div class="service-desc">Clutch plate replacement, pressure plate inspection, gearbox overhaul and synchroniser adjustment. We diagnose slipping clutch, gear jumping and hard gear engagement accurately.</div>
+      <span class="service-badge">Expert Technicians</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20need%20Clutch%20or%20Gearbox%20repair." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Steering &amp; Front Axle Service</div>
+      <div class="service-desc">Steering play adjustment, tie rod end replacement, king pin greasing, front axle alignment and toe-in setting. Ensures safe, accurate steering on both field and road.</div>
+      <span class="service-badge">Safety Critical</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20need%20Steering%20and%20Front%20Axle%20service." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🌟</span>
+      <div class="service-name">Full Seasonal Service Package</div>
+      <div class="service-desc">Pre-season or post-harvest complete service: engine oil, all filters, wheel &amp; hydraulic greasing, steering check, battery test, belt inspection, coolant top-up and full diagnostic. Best value for busy farmers.</div>
+      <span class="service-badge">⭐ Best Value</span>
+      <br>
+      <a class="service-wa-btn" href="https://wa.me/9368922297?text=I%20want%20the%20Full%20Seasonal%20Service%20Package." target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="why-layout">
+    <div class="why-left">
+      <div class="section-label">Why Choose Us</div>
+      <h2>Built on <em>Trust</em> &amp; Expertise</h2>
+      <p>Shifa Tractor Parts has been serving farmers, contractors and dealerships for over two decades. We know that every hour of downtime costs you money — so we stock extensive parts and offer fast, professional workshop services.</p>
+      <div class="why-facts">
+        <div class="why-fact"><div class="why-fact-num">01</div><div class="why-fact-text"><strong>Genuine &amp; Quality Parts</strong><span>OEM and high-grade aftermarket parts meeting original specifications.</span></div></div>
+        <div class="why-fact"><div class="why-fact-num">02</div><div class="why-fact-text"><strong>Skilled Workshop Technicians</strong><span>Experienced mechanics specialising in tractor service and repair for all major brands.</span></div></div>
+        <div class="why-fact"><div class="why-fact-num">03</div><div class="why-fact-text"><strong>Fast Service &amp; Nationwide Delivery</strong><span>Same-day service on most jobs. Parts shipped quickly to minimise your downtime.</span></div></div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="feature-tile"><div class="ft-icon">🏆</div><div class="ft-title">20+ Years in Business</div><div class="ft-body">Serving the agricultural community since 2005 with quality, speed and customer satisfaction.</div></div>
+      <div class="feature-tile"><div class="ft-icon">📦</div><div class="ft-title">5000+ Parts in Stock</div><div class="ft-body">Massive inventory covering all major brands — usually available same day.</div></div>
+      <div class="feature-tile"><div class="ft-icon">🤝</div><div class="ft-title">Trade Accounts</div><div class="ft-body">Special pricing and credit terms for dealers and workshops.</div></div>
+      <div class="feature-tile"><div class="ft-icon">🔍</div><div class="ft-title">Part Sourcing</div><div class="ft-body">Can't find it? We'll source it from our extensive supplier network.</div></div>
+      <div class="feature-tile"><div class="ft-icon">✅</div><div class="ft-title">Quality Guaranteed</div><div class="ft-body">All parts and service work backed by our quality guarantee and warranty.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands" id="brands">
+  <div class="brands-header">
+    <div class="section-label" style="justify-content:center">Brands We Cover</div>
+    <h2>Compatible With <em>All Major</em> Brands</h2>
+    <p>Parts and servicing for over 30 tractor manufacturers and models</p>
+  </div>
+  <div class="brand-grid">
+    <div class="brand-pill">Massey Ferguson</div><div class="brand-pill">New Holland</div>
+    <div class="brand-pill">John Deere</div><div class="brand-pill">Case IH</div>
+    <div class="brand-pill">Deutz-Fahr</div><div class="brand-pill">Kubota</div>
+    <div class="brand-pill">Fiat</div><div class="brand-pill">Ford</div>
+    <div class="brand-pill">Fendt</div><div class="brand-pill">Valtra</div>
+    <div class="brand-pill">Claas</div><div class="brand-pill">Belarus</div>
+    <div class="brand-pill">Sonalika</div><div class="brand-pill">Mahindra</div>
+    <div class="brand-pill">Eicher</div><div class="brand-pill">Landini</div>
+    <div class="brand-pill">SAME</div><div class="brand-pill">+ Many More</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="section-label">Get In Touch</div>
+      <h2>Contact <em>Us</em> Today</h2>
+      <p>Send an enquiry about parts or book a service. Our team responds quickly with pricing and availability.</p>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><div class="contact-item-label">Location</div><div class="contact-item-val">Main Market, Agricultural Zone<br>Your City, Pakistan</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div><div class="contact-item-label">Phone</div><div class="contact-item-val"><a href="tel:+919368922297">+91 9368922297</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/9368922297" target="_blank" rel="noopener">+91 9368922297</a></div></div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div><div class="contact-item-label">Hours</div><div class="contact-item-val">Mon – Sat: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 2:00 PM</div></div>
+      </div>
+      <div class="quick-actions">
+        <a href="https://wa.me/9368922297?text=Hello%20Shifa%20Tractor%20Parts!" target="_blank" rel="noopener" class="qa-btn wa">
+          <svg width="15" height="15" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+91 9368922297" class="qa-btn call">📞 Call Now</a>
+        <a href="https://maps.google.com/?q=Shifa+Tractor+Parts" target="_blank" rel="noopener" class="qa-btn maps">📍 Directions</a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-title">Request a Part or Service</div>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" id="fname" placeholder="Full Name"></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="fphone" placeholder="+92 69548 56786"></div>
+      </div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select id="ftype">
+          <option value="" disabled selected>Select type...</option>
+          <option>Spare Part Request</option>
+          <option>Wheel Greasing Service</option>
+          <option>Hydraulic Greasing Service</option>
+          <option>Engine Tune-Up Service</option>
+          <option>Clutch / Gearbox Repair</option>
+          <option>Steering &amp; Front Axle Service</option>
+          <option>Full Seasonal Service Package</option>
+          <option>Other Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tractor Brand &amp; Model</label>
+        <select id="fmodel">
+          <option value="" disabled selected>Select model...</option>
+          <option>Massey Ferguson 240</option>
+          <option>Massey Ferguson 260</option>
+          <option>Massey Ferguson 385</option>
+          <option>New Holland 70-56</option>
+          <option>New Holland TD80D</option>
+          <option>John Deere 5310</option>
+          <option>Fiat 640</option>
+          <option>Other (specify in message)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Part / Service Details</label><input type="text" id="fpart" placeholder="e.g. Hydraulic Pump or describe service needed"></div>
+      <div class="form-group"><label>Additional Message</label><textarea id="fmsg" placeholder="Any extra details..."></textarea></div>
+      <button class="submit-btn" onclick="sendWhatsApp()">Send via WhatsApp &#x2192;</button>
+      <p class="form-note">📲 Opens WhatsApp with your details pre-filled for instant reply</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="map-section">
+  <div class="map-wrapper">
+    <div class="map-overlay-bar">
+      <div>
+        <h3>📍 Find Our Shop</h3>
+        <p>Main Market, Agricultural Zone · Mon–Sat 8AM–7PM · Sun 9AM–2PM</p>
+      </div>
+      <a class="map-directions-btn" href="https://maps.google.com/?q=Shifa+Tractor+Parts" target="_blank" rel="noopener">
+        Get Directions &#x2192;
+      </a>
+    </div>
+    <!--
+      TO SET YOUR EXACT LOCATION:
+      1. Go to Google Maps → find your shop
+      2. Click Share → Embed a map → copy the iframe src URL
+      3. Paste it in the src="" below
+    -->
+    <iframe
+      class="map-frame"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d218226.58!2d73.2!3d31.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392269b0!2sShifa+Tractor+Parts!5e0!3m2!1sen!2spk!4v1"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Shifa Tractor Parts Location on Google Maps">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-text">Shifa Tractor Parts</div>
+      <div class="logo-sub">Parts &amp; Service · Since 2005</div>
+      <p>Your trusted partner for tractor spare parts and professional servicing. Serving farmers and contractors for over 20 years.</p>
+      <a href="https://wa.me/9368922297?text=Hello%20Shifa%20Tractor%20Parts!" target="_blank" rel="noopener" class="footer-wa">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.824.737 5.474 2.027 7.774L0 32l8.467-2.003A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.423c-.397-.2-2.35-1.16-2.714-1.29-.364-.134-.629-.2-.894.2-.264.397-1.024 1.29-1.255 1.557-.23.264-.46.297-.857.1-.397-.2-1.677-.618-3.194-1.97-1.18-1.052-1.977-2.35-2.21-2.747-.23-.397-.024-.611.174-.808.178-.177.397-.46.596-.693.2-.23.264-.397.397-.661.13-.264.066-.497-.033-.694-.1-.2-.894-2.153-1.224-2.947-.322-.773-.65-.668-.894-.68l-.761-.013c-.264 0-.694.1-1.058.497s-1.39 1.357-1.39 3.31 1.423 3.837 1.62 4.103c.2.264 2.8 4.273 6.784 5.993.948.41 1.688.654 2.265.837.952.302 1.818.26 2.502.158.764-.113 2.35-.96 2.682-1.887.33-.927.33-1.72.23-1.887-.097-.166-.364-.264-.76-.464z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <div class="footer-col">
+      <h4>Parts</h4>
+      <ul>
+        <li><a href="#categories">Engine Parts</a></li>
+        <li><a href="#categories">Hydraulics</a></li>
+        <li><a href="#categories">Transmission</a></li>
+        <li><a href="#categories">Electrical</a></li>
+        <li><a href="#categories">Steering</a></li>
+        <li><a href="#categories">Filters &amp; Belts</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Wheel Greasing</a></li>
+        <li><a href="#services">Hydraulic Greasing</a></li>
+        <li><a href="#services">Engine Tune-Up</a></li>
+        <li><a href="#services">Clutch Repair</a></li>
+        <li><a href="#services">Steering Service</a></li>
+        <li><a href="#services">Full Service Pack</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919368922297">📞 +91 9368922297</a></li>
+        <li><a href="https://wa.me/923000000000" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+        <li><a href="mailto:info@shifatractorparts.com">✉️ Email Us</a></li>
+        <li><a href="#map-section">📍 Our Location</a></li>
+        <li><a href="#why">🏆 About Us</a></li>
+        <li><a href="#brands">🚜 All Brands</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Shifa Tractor Parts</span>. All rights reserved.</p>
+    <p>🌾 Serving farmers with pride since 2005</p>
+  </div>
+</footer>
+
+<script>
+  // WhatsApp form — builds pre-filled message
+  function sendWhatsApp() {
+    const name  = document.getElementById('fname').value.trim()  || 'Not provided';
+    const phone = document.getElementById('fphone').value.trim() || 'Not provided';
+    const type  = document.getElementById('ftype').value         || 'General enquiry';
+    const model = document.getElementById('fmodel').value        || 'Not specified';
+    const part  = document.getElementById('fpart').value.trim()  || 'Not specified';
+    const msg   = document.getElementById('fmsg').value.trim();
+
+    const text =
+      `Hello Shifa Tractor Parts! 👋\n\n` +
+      `*Name:* ${name}\n` +
+      `*Phone:* ${phone}\n` +
+      `*Enquiry Type:* ${type}\n` +
+      `*Tractor Model:* ${model}\n` +
+      `*Part / Service:* ${part}\n` +
+      (msg ? `*Message:* ${msg}\n` : '') +
+      `\nPlease assist me. Thank you!`;
+
+    window.open('https://wa.me/923000000000?text=' + encodeURIComponent(text), '_blank');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.querySelector('.mobile-menu');
+    const btn  = document.querySelector('.hamburger');
+    if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
